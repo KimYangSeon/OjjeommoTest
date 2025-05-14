@@ -47,16 +47,6 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            docker stop ojjeommotest
-          tags: kys0611/ojjeommotest:latest
-
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
-          script: |
             docker stop ojjeommotest || true
             docker rm ojjeommotest || true
             docker pull ${{ secrets.DOCKER_IMAGE }}
